@@ -8,8 +8,8 @@ import ReactChunkySvg from 'eventbrite_design_system/iconography/icons/ReactChun
 
 const items = [
     {
-        content: 'Sample item',
-        value: 'ROUTE_DEFINED_IN_YOUR_ROUTE.JS_FILE',
+        content: 'Redux Basic',
+        value: 'exercises/redux-basic',
         iconType: <ReactChunkySvg />,
     },
 ];
