@@ -3,6 +3,7 @@ import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 
 import { configureStore } from 'js-utils/redux';
 import { getHistory, updateHistory } from 'js-utils/router';
@@ -18,7 +19,7 @@ export default class App extends Component {
     store = configureStore({
         reducer,
         initialState: getInitialState(),
-        middleware: [thunk, routerMiddleware(this.history)],
+        middleware: [thunk, routerMiddleware(this.history), createLogger({collapsed: true})],
     });
     history = syncHistoryWithStore(this.history, this.store);
   
