@@ -1,25 +1,38 @@
 import React, { PureComponent } from 'react';
 import isEmpty from 'lodash/isEmpty';
 
+import Pagination from 'eventbrite_design_system/pagination/Pagination';
+
 export default class Brewery extends PureComponent {
-    handleFetchData = () => {
+    state = {
+        breweryList: [],
+        currentPage: 1,
+    }
+    
+    componentDidMount() {
+        this.handleFetchData();
+    }
+
+    handleFetchData = (page = 1) => {
         const {
             onLoadBrewery,
         } = this.props;
 
-        onLoadBrewery();
+        onLoadBrewery(page).then(
+            (breweryList) => this.setState({ breweryList, currentPage: page })
+        );
     }
     
     render() {
         const {
             breweryList,
-        } = this.props;
+            currentPage,
+        } = this.state;
 
         if (isEmpty(breweryList)) {
             return (
                 <section>
-                    <div> No Data </div>
-                    <button onClick={this.handleFetchData}> Fetch data now!!!</button>
+                    <div> Loading Brewery </div>
                 </section>
             )
         }
@@ -31,6 +44,13 @@ export default class Brewery extends PureComponent {
                         ({ name, id }) => (<li key={id}>{name}</li>)
                     )}
                 </ul>
+                <Pagination
+                    pageNumber={currentPage}
+                    resultsPerPage={5}
+                    pageCount={10}
+                    size="continuous"
+                    onSelected={this.handleFetchData}
+                />
             </section>
         );
     }

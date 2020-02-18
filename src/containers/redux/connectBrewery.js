@@ -9,7 +9,7 @@ const mapStateToProps = ({ breweriesReducer }) => {
     };
 };
 const mapDispatchToProps = (dispatch) => ({
-    onLoadBrewery: () => dispatch(fetchBreweries()),
+    onLoadBrewery: (page) => dispatch(fetchBreweries(page)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

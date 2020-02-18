@@ -13,11 +13,14 @@ const dateReducer = (state = 'No data', { type, payload }) => {
     return nextState;
 };
 
-const breweriesReducer = (state = [], { type, payload }) => {
+const breweriesReducer = (state = {}, { type, payload }) => {
     let nextState = state;
 
     if (type === SET_BREWERIES) {
-        nextState = payload;
+        nextState = {
+            ...nextState,
+            ...payload,
+        };
     }
 
     return nextState;

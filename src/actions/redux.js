@@ -1,3 +1,5 @@
+import isEmpty from 'lodash/isEmpty';
+
 import { fetchBreweries as fetchBreweriesApi } from '../api/brewery';
 import { transformBreweries } from '../transformations/brewery';
 
@@ -15,14 +17,23 @@ export const setBreweries = (transformedBreweries) => ({
 });
 
 
-export const fetchBreweries = (page = 1) => (dispatch) =>{
-    fetchBreweriesApi(page).then(
+export const fetchBreweries = (page = 1) => (dispatch, getState) => {
+    const {
+        breweriesReducer,
+    } = getState();
+
+    if (!isEmpty(breweriesReducer[page])) {
+        return Promise.resolve(breweriesReducer[page]);
+    }
+
+    return fetchBreweriesApi(page).then(
         (breweryResult) => {
             const transformedBreweries = transformBreweries(breweryResult);
 
             dispatch(
-                setBreweries(transformedBreweries)
+                setBreweries({[page] : transformedBreweries})
             );
+            return transformedBreweries;
         }
     )
 };
