@@ -3,8 +3,12 @@ import { Route, IndexRoute } from 'react-router';
 
 import ConnectedPage from './containers/connectPage';
 import SiteStructure from './containers/SiteStructure';
+
 import ReduxBasic from './components/redux/ReduxBasic';
 import connectReduxBasic from './containers/redux/connectReduxBasic';
+
+import Brewery from './components/redux/Brewery';
+import connectBrewery from './containers/redux/connectBrewery';
 
 const BASE_PATH = '/';
 
@@ -18,6 +22,7 @@ const getRoutes = () => {
             <IndexRoute component={ConnectedPage} />
             <Route path="exercises" component={SiteStructure}>
                 <Route path ="redux-basic" component={connectReduxBasic(ReduxBasic)} />
+                <Route path ="redux-thunk" component={connectBrewery(Brewery)} />
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
         </Route>

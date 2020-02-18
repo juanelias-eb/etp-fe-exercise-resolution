@@ -28,6 +28,7 @@
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.18.0",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "eventbrite_design_system": "http://packages.evbops.com:8889/package/eventbrite_design_system/78.56.0",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
@@ -36,6 +37,7 @@
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
+    "js-utils": "http://packages.evbops.com:8889/package/js-utils/14.7.0",
     "lodash": "^4.3.0",
     "mini-css-extract-plugin": "0.9.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
@@ -63,13 +65,12 @@
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "2.3.4",
     "ts-pnp": "1.1.5",
+    "url-lib": "^3.0.3",
     "url-loader": "2.3.0",
     "webpack": "4.41.5",
     "webpack-dev-server": "3.10.2",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "4.3.1",
-    "eventbrite_design_system": "http://packages.evbops.com:8889/package/eventbrite_design_system/78.56.0",
-    "js-utils": "http://packages.evbops.com:8889/package/js-utils/14.7.0"
+    "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
     "start": "node scripts/start.js",

@@ -12,6 +12,11 @@ const items = [
         value: 'exercises/redux-basic',
         iconType: <ReactChunkySvg />,
     },
+    {
+        content: 'Redux thunk-1',
+        value: 'exercises/redux-thunk',
+        iconType: <ReactChunkySvg />,
+    },
 ];
 
 export default class ExercisesList extends React.Component {
