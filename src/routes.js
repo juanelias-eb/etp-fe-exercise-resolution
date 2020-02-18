@@ -10,6 +10,8 @@ import connectReduxBasic from './containers/redux/connectReduxBasic';
 import Brewery from './components/redux/Brewery';
 import connectBrewery from './containers/redux/connectBrewery';
 
+import EdsNotification from './components/eds/EdsNotification';
+
 const BASE_PATH = '/';
 
 const getRoutes = () => {
@@ -23,6 +25,7 @@ const getRoutes = () => {
             <Route path="exercises" component={SiteStructure}>
                 <Route path ="redux-basic" component={connectReduxBasic(ReduxBasic)} />
                 <Route path ="redux-thunk" component={connectBrewery(Brewery)} />
+                <Route path ="eds-notification" component={EdsNotification} />
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
         </Route>

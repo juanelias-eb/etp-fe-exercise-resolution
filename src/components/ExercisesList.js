@@ -19,6 +19,14 @@ const items = [
     },
 ];
 
+const edsItems = [
+    {
+        content: 'Eds - Main Controls - notifications',
+        value: 'exercises/eds-notification',
+        iconType: <ReactChunkySvg />,
+    },
+];
+
 export default class ExercisesList extends React.Component {
     handleNavigate = (route) => {
         browserHistory.push(route);
@@ -29,12 +37,20 @@ export default class ExercisesList extends React.Component {
             <section className="eds-best-practices eds-l-mar-vert-10 etp-expansion-panel">
                 <h1 className="eds-text-hm eds-l-pad-bot-6">List of exercises</h1>
                 <ExpansionPanel
-                    linkText="Exercises"
+                    linkText="Redux - Exercises"
                     verticalMargin="both"
                     //eslint-disable-next-line react/style-prop-object
                     style="container"
                 >
                     <TextList items={items} onItemSelect={this.handleNavigate}/>
+                </ExpansionPanel>
+                <ExpansionPanel
+                    linkText="EDS - Exercises"
+                    verticalMargin="both"
+                    //eslint-disable-next-line react/style-prop-object
+                    style="container"
+                >
+                    <TextList items={edsItems} onItemSelect={this.handleNavigate}/>
                 </ExpansionPanel>
             </section>
         )
