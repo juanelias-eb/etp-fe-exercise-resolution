@@ -25,6 +25,11 @@ const edsItems = [
         value: 'exercises/eds-notification',
         iconType: <ReactChunkySvg />,
     },
+    {
+        content: 'Eds - Main Controls - Action Bar',
+        value: 'exercises/eds-action-bar',
+        iconType: <ReactChunkySvg />,
+    },
 ];
 
 export default class ExercisesList extends React.Component {
