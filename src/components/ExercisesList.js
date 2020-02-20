@@ -35,6 +35,11 @@ const edsItems = [
         value: 'exercises/eds-dialog',
         iconType: <ReactChunkySvg />,
     },
+    {
+        content: 'EDS - Overlay Controls - Modal with Notification bar',
+        value: 'exercises/eds-modal',
+        iconType: <ReactChunkySvg />,
+    },
 ];
 
 export default class ExercisesList extends React.Component {

@@ -14,6 +14,7 @@ import EdsNotification from './components/eds/EdsNotification';
 
 import EdsActionBar from './components/eds/EdsActionBar';
 import EdsDialog from './components/eds/EdsDialog';
+import EdsModalWithNotification from './components/eds/EdsModalWithNotification';
 
 const BASE_PATH = '/';
 
@@ -31,6 +32,7 @@ const getRoutes = () => {
                 <Route path ="eds-notification" component={EdsNotification} />
                 <Route path ="eds-action-bar" component={EdsActionBar} />
                 <Route path ="eds-dialog" component={EdsDialog} />
+                <Route path ="eds-modal" component={EdsModalWithNotification} />
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
         </Route>
