@@ -30,6 +30,11 @@ const edsItems = [
         value: 'exercises/eds-action-bar',
         iconType: <ReactChunkySvg />,
     },
+    {
+        content: 'Eds - Overlay Controls - Dialog',
+        value: 'exercises/eds-dialog',
+        iconType: <ReactChunkySvg />,
+    },
 ];
 
 export default class ExercisesList extends React.Component {

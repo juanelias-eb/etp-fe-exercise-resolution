@@ -13,6 +13,7 @@ import connectBrewery from './containers/redux/connectBrewery';
 import EdsNotification from './components/eds/EdsNotification';
 
 import EdsActionBar from './components/eds/EdsActionBar';
+import EdsDialog from './components/eds/EdsDialog';
 
 const BASE_PATH = '/';
 
@@ -29,6 +30,7 @@ const getRoutes = () => {
                 <Route path ="redux-thunk" component={connectBrewery(Brewery)} />
                 <Route path ="eds-notification" component={EdsNotification} />
                 <Route path ="eds-action-bar" component={EdsActionBar} />
+                <Route path ="eds-dialog" component={EdsDialog} />
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
         </Route>
