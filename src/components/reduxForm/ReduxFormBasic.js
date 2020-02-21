@@ -18,11 +18,7 @@ export default class ReduxFormBasic extends Component {
 
         this.props.handleSubmit();
     }
-    componentDidUpdate() {
-        // if (this.props.onReduxChange) {
-        //     this.props.onReduxChange();
-        // }
-    }
+
     render() {
         const {
             reduxBasicFormData,

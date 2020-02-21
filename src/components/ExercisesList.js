@@ -53,7 +53,7 @@ const reduxForm = [
         value: 'exercises/redux-form-basic',
         iconType: <ReactChunkySvg />,
     },
-]
+];
 
 export default class ExercisesList extends React.Component {
     handleNavigate = (route) => {
