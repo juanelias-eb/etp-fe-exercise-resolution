@@ -18,6 +18,9 @@ import EdsModalWithNotification from './components/eds/EdsModalWithNotification'
 
 import EdsFocusDrawer from './components/eds/EdsFocusDrawer';
 import EdsFocusDrawerComponent from './components/eds/EdsFocusDrawerComponent';
+
+import ReduxFormBasic from './containers/reduxForm/connectReduxFormBasic';
+
 import { assembleComponentWithFocusDrawer } from './utils';
 
 const BASE_PATH = '/';
@@ -33,14 +36,15 @@ const getRoutes = () => {
         <Route path={BASE_PATH}>
             <IndexRoute component={ConnectedPage} />
             <Route path="exercises" component={SiteStructure}>
-                <Route path ="redux-basic" component={connectReduxBasic(ReduxBasic)} />
-                <Route path ="redux-thunk" component={connectBrewery(Brewery)} />
-                <Route path ="eds-notification" component={EdsNotification} />
-                <Route path ="eds-action-bar" component={EdsActionBar} />
-                <Route path ="eds-dialog" component={EdsDialog} />
-                <Route path ="eds-modal" component={EdsModalWithNotification} />
-                <Route path ="eds-focus-drawer" component={EdsFocusDrawer} />
-                <Route path ="eds-focus-component" components={edsFocusDrawerExercise} />
+                <Route path="redux-basic" component={connectReduxBasic(ReduxBasic)} />
+                <Route path="redux-thunk" component={connectBrewery(Brewery)} />
+                <Route path="eds-notification" component={EdsNotification} />
+                <Route path="eds-action-bar" component={EdsActionBar} />
+                <Route path="eds-dialog" component={EdsDialog} />
+                <Route path="eds-modal" component={EdsModalWithNotification} />
+                <Route path="eds-focus-drawer" component={EdsFocusDrawer} />
+                <Route path="eds-focus-component" components={edsFocusDrawerExercise} />
+                <Route path="redux-form-basic" component={ReduxFormBasic} />
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
         </Route>

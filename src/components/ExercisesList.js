@@ -47,6 +47,14 @@ const edsItems = [
     },
 ];
 
+const reduxForm = [
+    {
+        content: 'Redux Form - Basic',
+        value: 'exercises/redux-form-basic',
+        iconType: <ReactChunkySvg />,
+    },
+]
+
 export default class ExercisesList extends React.Component {
     handleNavigate = (route) => {
         browserHistory.push(route);
@@ -71,6 +79,14 @@ export default class ExercisesList extends React.Component {
                     style="container"
                 >
                     <TextList items={edsItems} onItemSelect={this.handleNavigate}/>
+                </ExpansionPanel>
+                <ExpansionPanel
+                    linkText="Redux Form - Basic"
+                    verticalMargin="both"
+                    //eslint-disable-next-line react/style-prop-object
+                    style="container"
+                >
+                    <TextList items={reduxForm} onItemSelect={this.handleNavigate}/>
                 </ExpansionPanel>
             </section>
         )
