@@ -16,7 +16,13 @@ import EdsActionBar from './components/eds/EdsActionBar';
 import EdsDialog from './components/eds/EdsDialog';
 import EdsModalWithNotification from './components/eds/EdsModalWithNotification';
 
+import EdsFocusDrawer from './components/eds/EdsFocusDrawer';
+import EdsFocusDrawerComponent from './components/eds/EdsFocusDrawerComponent';
+import { assembleComponentWithFocusDrawer } from './utils';
+
 const BASE_PATH = '/';
+
+const edsFocusDrawerExercise = assembleComponentWithFocusDrawer('Focus Drawer', EdsFocusDrawerComponent, EdsFocusDrawer);
 
 const getRoutes = () => {
     const goToBaseUrl = (nextRouterState, replace) => {
@@ -33,6 +39,8 @@ const getRoutes = () => {
                 <Route path ="eds-action-bar" component={EdsActionBar} />
                 <Route path ="eds-dialog" component={EdsDialog} />
                 <Route path ="eds-modal" component={EdsModalWithNotification} />
+                <Route path ="eds-focus-drawer" component={EdsFocusDrawer} />
+                <Route path ="eds-focus-component" components={edsFocusDrawerExercise} />
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
         </Route>

@@ -16,10 +16,32 @@ class SiteStructure extends Component {
     }
 
     render() {
+        const {
+            focusDrawerContent,
+            focusDrawerTitle,
+            focusDrawerOptions,
+        } = this.props;
+        let nextFocusDrawerOptions;
+
+        if (focusDrawerContent) {
+            nextFocusDrawerOptions = {
+                ...focusDrawerOptions,
+                content: focusDrawerContent,
+                title: focusDrawerTitle,
+                hideClose: false,
+                isShown: !!focusDrawerContent,
+            };
+        } else {
+            nextFocusDrawerOptions = {
+                content: '',
+            };
+        }
+
         return (
             <Structure
                 hasIndependentScrolling
                 {...this.props}
+                focusDrawerOptions={nextFocusDrawerOptions}
             >
                 <Layout
                     maxWidth="large"

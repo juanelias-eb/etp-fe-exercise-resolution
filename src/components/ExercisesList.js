@@ -40,6 +40,11 @@ const edsItems = [
         value: 'exercises/eds-modal',
         iconType: <ReactChunkySvg />,
     },
+    {
+        content: 'EDS - Focus Drawer Controls - Focus drawer & router',
+        value: 'exercises/eds-focus-drawer',
+        iconType: <ReactChunkySvg />,
+    },
 ];
 
 export default class ExercisesList extends React.Component {
