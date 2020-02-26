@@ -11,7 +11,8 @@ export const transformBreweries = (breweriesList = []) => (
             name,
             websiteUrl,
             street,
-            city
+            city,
+            logoUrl: `https://i.picsum.photos/id/${id}/200/300.jpg`
         })
     )
 );

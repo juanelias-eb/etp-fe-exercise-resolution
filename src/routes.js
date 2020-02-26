@@ -27,6 +27,9 @@ import ReduxFormActionCreatorInit from './containers/reduxForm/connectReduxFormA
 import ReduxFormSelectors from './containers/reduxForm/connectReduxFormSelectors';
 import ReduxFormValidator from './containers/reduxForm/connectReduxFormValidator';
 
+import BreweryComponent from './components/brewery/Brewery';
+import connectBreweryConnector from './containers/brewery/connectBrewery';
+
 const BASE_PATH = '/';
 
 const edsFocusDrawerExercise = assembleComponentWithFocusDrawer('Focus Drawer', EdsFocusDrawerComponent, EdsFocusDrawer);
@@ -53,6 +56,9 @@ const getRoutes = () => {
                 <Route path="redux-form-action-creator-init" component={ReduxFormActionCreatorInit} />
                 <Route path="redux-form-selectors" component={ReduxFormSelectors} />
                 <Route path="redux-form-validators" component={ReduxFormValidator} />
+                <Route path="brewery">
+                    <IndexRoute component={connectBreweryConnector(BreweryComponent)} />
+                </Route> 
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
         </Route>

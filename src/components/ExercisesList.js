@@ -13,7 +13,7 @@ const items = [
         iconType: <ReactChunkySvg />,
     },
     {
-        content: 'Redux thunk-1',
+        content: 'Redux thunk',
         value: 'exercises/redux-thunk',
         iconType: <ReactChunkySvg />,
     },
@@ -75,6 +75,14 @@ const reduxForm = [
     },
 ];
 
+const brewery = [
+    {
+        content: 'Brewery - layout',
+        value: 'exercises/brewery',
+        iconType: <ReactChunkySvg />,
+    },
+];
+
 export default class ExercisesList extends React.Component {
     handleNavigate = (route) => {
         browserHistory.push(route);
@@ -107,6 +115,14 @@ export default class ExercisesList extends React.Component {
                     style="container"
                 >
                     <TextList items={reduxForm} onItemSelect={this.handleNavigate}/>
+                </ExpansionPanel>
+                <ExpansionPanel
+                    linkText="Brewery"
+                    verticalMargin="both"
+                    //eslint-disable-next-line react/style-prop-object
+                    style="container"
+                >
+                    <TextList items={brewery} onItemSelect={this.handleNavigate}/>
                 </ExpansionPanel>
             </section>
         )
