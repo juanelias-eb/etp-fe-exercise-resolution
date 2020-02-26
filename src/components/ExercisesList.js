@@ -68,6 +68,11 @@ const reduxForm = [
         value: 'exercises/redux-form-selectors',
         iconType: <ReactChunkySvg />,
     },
+    {
+        content: 'Redux Form - Validators',
+        value: 'exercises/redux-form-validators',
+        iconType: <ReactChunkySvg />,
+    },
 ];
 
 export default class ExercisesList extends React.Component {
