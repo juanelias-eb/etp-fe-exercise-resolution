@@ -10,13 +10,23 @@ import {
     STYLE_STATIC,
     STYLE_BASIC,
 } from 'eventbrite_design_system/inputField/constants';
+import noop from 'lodash/noop';
 
 export default class ReduxFormBasic extends Component {
+    static defaultProps = {
+        onLoad: noop,
+    }
     handleSubmit = (event) => {
         event.preventDefault();
         event.stopPropagation();
 
         this.props.handleSubmit();
+    }
+
+    componentDidMount() {
+        const { onLoad } = this.props;
+
+        onLoad();
     }
 
     render() {

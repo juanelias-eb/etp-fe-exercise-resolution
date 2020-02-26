@@ -58,6 +58,11 @@ const reduxForm = [
         value: 'exercises/redux-form-state-init',
         iconType: <ReactChunkySvg />,
     },
+    {
+        content: 'Redux Form - Action Creator Init',
+        value: 'exercises/redux-form-action-creator-init',
+        iconType: <ReactChunkySvg />,
+    },
 ];
 
 export default class ExercisesList extends React.Component {
