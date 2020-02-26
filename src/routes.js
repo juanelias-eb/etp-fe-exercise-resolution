@@ -27,7 +27,7 @@ import ReduxFormActionCreatorInit from './containers/reduxForm/connectReduxFormA
 import ReduxFormSelectors from './containers/reduxForm/connectReduxFormSelectors';
 import ReduxFormValidator from './containers/reduxForm/connectReduxFormValidator';
 
-import BreweryComponent from './components/brewery/Brewery';
+import BreweryComponent from './components/brewery/BreweryLayout';
 import connectBreweryConnector from './containers/brewery/connectBrewery';
 
 const BASE_PATH = '/';

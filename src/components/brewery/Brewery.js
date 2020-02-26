@@ -1,15 +1,54 @@
 import React, { PureComponent } from 'react';
+import isEmpty from 'lodash/isEmpty';
+import noop from 'lodash/noop';
 
-import Pagination from 'eventbrite_design_system/pagination/Pagination';
 import ProgressIndicator from 'eventbrite_design_system/progressIndicator/ProgressIndicator';
+import EmptyState from 'eventbrite_design_system/emptyState/EmptyState';
+import GhostGraphicSvg from 'eventbrite_design_system/iconography/icons/GhostGraphic';
+
 import BreweryTableHeader from './BreweryTableHeader';
 import BreweryTableBody from './BreweryTableBody';
+import BreweryTableFooter from './BreweryTableFooter';
+
+const BreweryTable = ({
+    breweryList,
+    currentPage,
+    onSelected,
+    onAddBrewery,
+    pageCount,
+    isCustom,
+}) => (
+    <>
+        {
+            isEmpty(breweryList)
+                ? 
+                    <div className="eds-l-pad-top-20">
+                        <EmptyState
+                            graphicType={<GhostGraphicSvg />}
+                            title="No Breweries!!!"
+                            primaryText={isCustom ? "Add Breweries" : null}
+                            onPrimaryAction={isCustom ? onAddBrewery : null}
+                        />
+                    </div>
+                :
+                    <>
+                        <BreweryTableBody breweryList={breweryList} />
+                        <BreweryTableFooter currentPage={currentPage} onSelected={onSelected} pageCount={pageCount} />
+                    </>
+        }
+    </>
+);
 
 export default class Brewery extends PureComponent {
     state = {
         breweryList: [],
         currentPage: 1,
         isLoading: true,
+    }
+
+    static defaultProps = {
+        onAddBrewery: noop,
+        pageCount: 10,
     }
     
     componentDidMount() {
@@ -34,23 +73,26 @@ export default class Brewery extends PureComponent {
             currentPage,
             isLoading,
         } = this.state;
+        const {
+            onAddBrewery,
+            pageCount,
+            isCustom,
+        } = this.props;
 
         return (
-            <section className="eds-l-pad-top-10">
+            <section>
                 <BreweryTableHeader />
                 {isLoading
                     ? <ProgressIndicator shape="linear" style="gradient" />
                     : (
-                        <>
-                            <BreweryTableBody breweryList={breweryList} />
-                            <Pagination
-                                pageNumber={currentPage}
-                                resultsPerPage={5}
-                                pageCount={10}
-                                size="small"
-                                onSelected={this.handleFetchData}
-                            />
-                        </>
+                        <BreweryTable
+                            breweryList={breweryList}
+                            onSelected={this.handleFetchData}
+                            currentPage={currentPage}
+                            onAddBrewery={onAddBrewery}
+                            pageCount={pageCount}
+                            isCustom={isCustom}
+                        />
                     )
                 }
             </section>

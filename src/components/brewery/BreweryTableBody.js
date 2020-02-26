@@ -27,42 +27,36 @@ const Venue = ({ city, street }) => (
 );
 
 const TertiaryContent = ({ websiteUrl }) => (
-    <div>
-        <StatusLabel url={websiteUrl} />
-    </div>
+    <StatusLabel url={websiteUrl} />
 );
 
 const BreweryTableBody = ({ breweryList }) => {
-    const items = breweryList.map((brewery) => {
-        const {
-            id,
-            name,
-            websiteUrl,
-            logoUrl,
-            street,
-            city,
-        } = brewery;
-
-        return (
-            <EditListItem
-                key={id}
-                content={name}
-                secondaryContent={<Venue city={city} street={street} />}
-                tertiaryContent={
-                    <TertiaryContent websiteUrl={websiteUrl} />
-                }
-                imageUrl={logoUrl}
-                isSquareImage={true}
-                actionItems={[]}
-                noWrap={true}
-            />
-        );
-    });
+    const items = breweryList.map(({
+        id,
+        name,
+        websiteUrl,
+        logoUrl,
+        street,
+        city,
+    }) => (
+        <EditListItem
+            key={id}
+            content={name}
+            secondaryContent={<Venue city={city} street={street} />}
+            tertiaryContent={
+                <TertiaryContent websiteUrl={websiteUrl} />
+            }
+            imageUrl={logoUrl}
+            isSquareImage={true}
+            actionItems={[]}
+            noWrap={true}
+        />
+    ));
 
     return (
-        <>
+        <section>
             {items}
-        </>
+        </section>
     );
 };
 
