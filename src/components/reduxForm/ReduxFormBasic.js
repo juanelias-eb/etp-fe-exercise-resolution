@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ClassNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
+import noop from 'lodash/noop';
 
 import Button from 'eventbrite_design_system/button/Button';
 import InputField from 'eventbrite_design_system/inputField/InputField';
@@ -10,11 +11,55 @@ import {
     STYLE_STATIC,
     STYLE_BASIC,
 } from 'eventbrite_design_system/inputField/constants';
-import noop from 'lodash/noop';
+
+const SelectorFields = ({ isFormSelector }) => (
+    isFormSelector
+        ? (
+            <div className="eds-l-pad-top-3">
+                <ValidationFormField
+                    v2={true}
+                    name="selector"
+                    label="Selector field"
+                    required={true}
+                >
+                    <SelectField
+                        label="Selector field"
+                        id="selector"
+                        placeholder="Select which value you require"
+                        values={[
+                            {
+                                value: 'firstField',
+                                display: 'Initial Field',
+                            },
+                            {
+                                value: 'secondField',
+                                display: 'Initial select field',
+                            },
+                            {
+                                value: 'thirdField',
+                                display: 'Last select field',
+                            },
+                            {
+                                value: '5Field',
+                                display: 'Last input field',
+                            },
+                            {
+                                value: 'all',
+                                display: 'All values',
+                            },
+                        ]}
+                        style={STYLE_BASIC}
+                    />
+                </ValidationFormField>
+            </div>
+        )
+        : null
+);
 
 export default class ReduxFormBasic extends Component {
     static defaultProps = {
         onLoad: noop,
+        isFormSelector: false,
     }
     handleSubmit = (event) => {
         event.preventDefault();
@@ -32,6 +77,7 @@ export default class ReduxFormBasic extends Component {
     render() {
         const {
             reduxBasicFormData,
+            isFormSelector,
         } = this.props;
         const formClasses = ClassNames(
             'eds-g-cell',
@@ -135,6 +181,7 @@ export default class ReduxFormBasic extends Component {
                             </ValidationFormField>
                         </div>
                     </div>
+                    <SelectorFields isFormSelector={isFormSelector} />
                     <div className="eds-align--right">
                         {/* eslint-disable-next-line */}
                         <Button style="fill" onClick={this.handleSubmit}>
@@ -146,7 +193,7 @@ export default class ReduxFormBasic extends Component {
                     {
                         !isEmpty(reduxBasicFormData)
                             ? (
-                                <textarea cols={50} rows={15} value={JSON.stringify(reduxBasicFormData, null, 4)} />
+                                <textarea cols={50} rows={15} value={JSON.stringify(reduxBasicFormData, null, 4)} readOnly />
                             )
                             : null
                     }

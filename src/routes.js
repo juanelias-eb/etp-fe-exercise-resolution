@@ -24,6 +24,7 @@ import ReduxFormBasic from './containers/reduxForm/connectReduxFormBasic';
 import { assembleComponentWithFocusDrawer } from './utils';
 import ReduxFormStateInit from './containers/reduxForm/connectReduxFormStateInit';
 import ReduxFormActionCreatorInit from './containers/reduxForm/connectReduxFormActionCreatorInit';
+import ReduxFormSelectors from './containers/reduxForm/connectReduxFormSelectors';
 
 const BASE_PATH = '/';
 
@@ -49,6 +50,7 @@ const getRoutes = () => {
                 <Route path="redux-form-basic" component={ReduxFormBasic} />
                 <Route path="redux-form-state-init" component={ReduxFormStateInit} />
                 <Route path="redux-form-action-creator-init" component={ReduxFormActionCreatorInit} />
+                <Route path="redux-form-selectors" component={ReduxFormSelectors} />
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
         </Route>
