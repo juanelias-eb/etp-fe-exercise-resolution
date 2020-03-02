@@ -10,7 +10,6 @@ import {
 } from 'js-utils/validators';
 
 const validator = (formValues, componentProps) => {
-    debugger;
     const firstFieldValidator = makeValidator({
         'firstField': [
             {

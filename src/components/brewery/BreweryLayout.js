@@ -3,11 +3,27 @@ import React from 'react';
 import Tabs from 'eventbrite_design_system/tabs/Tabs';
 import Brewery from './Brewery';
 
-export default class BreweryLayout extends React.PureComponent {
+const fixPageCount = (count) => (
+    parseInt(count / 5) +  (count % 5 > 1 ? 1 : 0)
+);
+
+export default class BreweryLayout extends React.Component {
+    handleCurrentTab = (fn, index) => (...args) =>{
+        const {
+            setBreweryTab,
+        } = this.props;
+
+        setBreweryTab(index);
+        return fn(...args);
+    };
+
+
     render() {
         const {
             onLoadBrewery,
             onAddBrewery,
+            customBreweryList,
+            breweryTabIndex,
         } = this.props;
 
         return (
@@ -21,7 +37,7 @@ export default class BreweryLayout extends React.PureComponent {
                                 content: (
                                     <Brewery
                                         key={0}
-                                        onLoadBrewery={onLoadBrewery}
+                                        onLoadBrewery={this.handleCurrentTab(onLoadBrewery, 0)}
                                     />
                                 )
                             },
@@ -31,14 +47,16 @@ export default class BreweryLayout extends React.PureComponent {
                                 content: (
                                     <Brewery
                                         key={1}
-                                        onLoadBrewery={() => Promise.resolve()}
-                                        onAddBrewery={onAddBrewery}
+                                        breweryList={customBreweryList}
+                                        onAddBrewery={this.handleCurrentTab(onAddBrewery, 1)}
                                         isCustom={true}
+                                        pageCount={fixPageCount(customBreweryList.length)}
                                     />
                                 )
                             },
                         ]
                     }
+                    initialSelectedTab={breweryTabIndex}
                 />
             </>
         );

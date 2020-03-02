@@ -5,10 +5,31 @@ import noop from 'lodash/noop';
 import ProgressIndicator from 'eventbrite_design_system/progressIndicator/ProgressIndicator';
 import EmptyState from 'eventbrite_design_system/emptyState/EmptyState';
 import GhostGraphicSvg from 'eventbrite_design_system/iconography/icons/GhostGraphic';
+import Button from 'eventbrite_design_system/button/Button';
 
 import BreweryTableHeader from './BreweryTableHeader';
 import BreweryTableBody from './BreweryTableBody';
 import BreweryTableFooter from './BreweryTableFooter';
+
+const AddNewBrewery = ({
+    isCustom,
+    onAddBrewery,
+}) => (
+        <>
+            {
+                isCustom
+                    ? (
+                        <div className="eds-align--right" >
+                            {/* eslint-disable-next-line */}
+                            <Button style="fill" onClick={onAddBrewery} >
+                                Add more Breweries!!!
+                            </Button>
+                        </div>
+                    )
+                    : null
+            }
+        </>
+);
 
 const BreweryTable = ({
     breweryList,
@@ -33,6 +54,7 @@ const BreweryTable = ({
                 :
                     <>
                         <BreweryTableBody breweryList={breweryList} />
+                        <AddNewBrewery isCustom={isCustom} onAddBrewery={onAddBrewery} />
                         <BreweryTableFooter currentPage={currentPage} onSelected={onSelected} pageCount={pageCount} />
                     </>
         }
@@ -55,16 +77,45 @@ export default class Brewery extends PureComponent {
         this.handleFetchData();
     }
 
+    componentDidUpdate({ breweryList: oldBreweryList }) {
+        const {
+            breweryList,
+            isCustom,
+        } = this.props;
+
+        if (isCustom && breweryList.length !== oldBreweryList.length) {
+            this.handleCustomUpdate(this.state.currentPage);
+        }
+    }
+
     handleFetchData = (page = 1) => {
         const {
             onLoadBrewery,
+            isCustom,
         } = this.props;
-
-        this.setState({ isLoading: true});
+        
+        if (isCustom) {
+            return this.handleCustomUpdate(page);
+        }
+        
+        this.setState({ isLoading: true });
 
         onLoadBrewery(page).then(
             (breweryList) => this.setState({ breweryList, currentPage: page, isLoading: false })
         );
+
+    }
+
+    handleCustomUpdate = (page) => {
+        const {
+            breweryList,
+        } = this.props;
+
+        this.setState({
+            breweryList: breweryList.slice(page - 1, page * 5),
+            currentPage: page,
+            isLoading: false,
+        });
     }
     
     render() {
@@ -83,6 +134,7 @@ export default class Brewery extends PureComponent {
             <section>
                 <BreweryTableHeader />
                 {isLoading
+                // eslint-disable-next-line
                     ? <ProgressIndicator shape="linear" style="gradient" />
                     : (
                         <BreweryTable

@@ -29,10 +29,14 @@ import ReduxFormValidator from './containers/reduxForm/connectReduxFormValidator
 
 import BreweryComponent from './components/brewery/BreweryLayout';
 import connectBreweryConnector from './containers/brewery/connectBrewery';
+import BreweryForm from './components/brewery/BreweryForm';
+import connectBreweryForm from './containers/brewery/connectBreweryForm';
 
 const BASE_PATH = '/';
 
 const edsFocusDrawerExercise = assembleComponentWithFocusDrawer('Focus Drawer', EdsFocusDrawerComponent, EdsFocusDrawer);
+
+const breweryComponent = assembleComponentWithFocusDrawer('Add your brewery', connectBreweryForm(BreweryForm), connectBreweryConnector(BreweryComponent));
 
 const getRoutes = () => {
     const goToBaseUrl = (nextRouterState, replace) => {
@@ -58,6 +62,7 @@ const getRoutes = () => {
                 <Route path="redux-form-validators" component={ReduxFormValidator} />
                 <Route path="brewery">
                     <IndexRoute component={connectBreweryConnector(BreweryComponent)} />
+                    <Route path="form" components={breweryComponent} />
                 </Route> 
             </Route>
             <Route path="*" onEnter={goToBaseUrl} />
