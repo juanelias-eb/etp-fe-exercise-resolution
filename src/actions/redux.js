@@ -1,8 +1,8 @@
-import { fetchBreweries as fetchBreweriesApi } from '../api/brewery';
-import { transformBreweries } from '../transformations/brewery';
+import { fetchBreweries as fetchBreweriesApi } from "../api/brewery";
+import { transformBreweries } from "../transformations/brewery";
 
-export const SET_DATE = 'SET_DATE';
-export const SET_BREWERIES = 'SET_BREWERIES';
+export const SET_DATE = "SET_DATE";
+export const SET_BREWERIES = "SET_BREWERIES";
 
 export const setDate = () => ({
     type: SET_DATE,
@@ -14,15 +14,10 @@ export const setBreweries = (transformedBreweries) => ({
     payload: transformedBreweries,
 });
 
+export const fetchBreweries = (page = 1) => (dispatch) => {
+    fetchBreweriesApi(page).then((breweryResult) => {
+        const transformedBreweries = transformBreweries(breweryResult);
 
-export const fetchBreweries = (page = 1) => (dispatch) =>{
-    fetchBreweriesApi(page).then(
-        (breweryResult) => {
-            const transformedBreweries = transformBreweries(breweryResult);
-
-            dispatch(
-                setBreweries(transformedBreweries)
-            );
-        }
-    )
+        dispatch(setBreweries(breweryResult));
+    });
 };
